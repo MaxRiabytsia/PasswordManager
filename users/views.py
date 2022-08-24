@@ -1,7 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.urls import reverse
+from django.contrib.auth.views import LoginView
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+
+
+class LoginViewWithRedirectToPasswords(LoginView):
+    template_name = 'users/login.html'
+
+    def get_success_url(self):
+        return reverse('user-passwords', args=[self.request.user.username])
 
 
 def register(request):

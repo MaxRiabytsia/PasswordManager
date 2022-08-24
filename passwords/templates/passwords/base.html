@@ -25,7 +25,7 @@
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
                     {% if user.is_authenticated %}
-                        <a class="nav-item nav-link" href="#">My Passwords</a>
+                        <a class="nav-item nav-link" href="{% url 'user-passwords' user.username %}">My Passwords</a>
                         <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
                         <a class="nav-item nav-link" href="{% url 'profile' %}">{{ user.username }}</a>
                     {% else %}
