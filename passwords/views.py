@@ -14,7 +14,6 @@ class UserPasswordsListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     template_name = 'passwords/passwords.html'
     context_object_name = 'passwords'
     ordering = ['service']
-    paginate_by = 5
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
