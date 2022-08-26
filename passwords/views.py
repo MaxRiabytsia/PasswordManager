@@ -17,7 +17,8 @@ class UserPasswordsListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
-        return Password.objects.filter(author=user).order_by('service')
+        passwords = Password.objects.filter(author=user).order_by('service')
+        return [passwords[i:i+2] for i in range(0, len(passwords), 2)]
 
     def test_func(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))

@@ -7,9 +7,9 @@ from django.urls import reverse
 class Password(models.Model):
     service = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
-    username = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
-    additional_info = models.TextField()
+    username = models.CharField(max_length=255, blank=True, default='')
+    email = models.CharField(max_length=255, blank=True, default='')
+    additional_info = models.TextField(blank=True, default='')
     date_created = models.DateTimeField(default=timezone.now)
     last_modified = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')

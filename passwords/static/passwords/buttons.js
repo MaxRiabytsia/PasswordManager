@@ -1,5 +1,12 @@
 function showPassword(event, password) {
-    event.target.closest('#row').querySelector('#password').innerHTML = password;
+    if (event.target.innerHTML === "Show") {
+        event.target.closest('#password_row').querySelector('#password').innerHTML = password;
+        event.target.innerHTML = "Hide";
+    }
+    else {
+        event.target.closest('#password_row').querySelector('#password').innerHTML = "•••••••••••";
+        event.target.innerHTML = "Show";
+    }
 }
 
 
