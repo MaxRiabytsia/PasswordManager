@@ -17,6 +17,19 @@ a, a:hover {
     text-decoration: none;
 }
 
+#detail_page_link:hover #icon{
+    width: 72px;
+    height: auto;
+}
+
+#detail_page_link:hover #service_name{
+    font-size: 22pt;
+}
+
+#text_link:hover {
+    font-size: 110%;
+}
+
 .bg-steel {
     background-color: #28c996;
 }
