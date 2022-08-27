@@ -17,13 +17,23 @@ a, a:hover {
     text-decoration: none;
 }
 
-#detail_page_link:hover #icon{
+#icon {
+    transition: 0s width;
+}
+
+#service_name {
+    transition: 0s font-size;
+}
+
+#detail_page_link:hover #icon {
     width: 72px;
     height: auto;
+    transition-delay: 0.1s;
 }
 
 #detail_page_link:hover #service_name{
     font-size: 22pt;
+    transition-delay: 0.1s;
 }
 
 #text_link:hover {
