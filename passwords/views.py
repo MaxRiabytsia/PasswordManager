@@ -57,8 +57,10 @@ class PasswordUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class PasswordDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Password
-    success_url = '/'
 
     def test_func(self):
         password = self.get_object()
         return self.request.user == password.author
+
+    def get_success_url(self):
+        return reverse('user-passwords', args=[self.request.user.username])
