@@ -1,6 +1,7 @@
 {% extends "passwords/base.html" %}
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
+{% load static %}
 {% block content %}
     <div class="content-section">
         <form method="POST">
@@ -12,7 +13,11 @@
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="main_btn" type="submit" style="padding: 5px; margin-bottom: 5px; margin-top: 5px;">
+                <button class="main_btn" type="submit" style="padding: 5px; margin-bottom: 5px; margin-top: 5px;"
+                        onclick="getUserKey(
+                            document.getElementById('id_username').value,
+                            document.getElementById('id_password').value
+                            )">
                     Log In
                 </button>
                 <small class="text-muted ml-2" id="text_link">
@@ -26,4 +31,5 @@
             </small>
         </div>
     </div>
+    <script src="../../static/users/getUserKey.js"></script>
 {% endblock content %}
