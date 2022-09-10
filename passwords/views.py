@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Password
 
@@ -13,11 +14,11 @@ class UserPasswordsListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Password
     template_name = 'passwords/passwords.html'
     context_object_name = 'passwords'
-    ordering = ['service']
+    ordering = ['service_name']
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
-        passwords = Password.objects.filter(author=user).order_by('service')
+        passwords = Password.objects.filter(author=user).order_by('service_name')
         return [passwords[i:i+2] for i in range(0, len(passwords), 2)]
 
     def test_func(self):
@@ -35,7 +36,7 @@ class PasswordDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 
 class PasswordCreateView(LoginRequiredMixin, CreateView):
     model = Password
-    fields = ['service', 'password', 'username', 'email', 'additional_info']
+    fields = ['service_url', 'password', 'username', 'email', 'additional_info']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -44,7 +45,7 @@ class PasswordCreateView(LoginRequiredMixin, CreateView):
 
 class PasswordUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Password
-    fields = ['service', 'password', 'username', 'email', 'additional_info']
+    fields = ['service_url', 'password', 'username', 'email', 'additional_info']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
