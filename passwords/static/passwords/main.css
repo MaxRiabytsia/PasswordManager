@@ -19,6 +19,8 @@ a, a:hover {
 
 #icon {
     transition: 0s width;
+    width: 55px;
+    height: auto;
 }
 
 #service_name {
@@ -26,14 +28,14 @@ a, a:hover {
 }
 
 #detail_page_link:hover #icon {
-    width: 72px;
+    width: 62px;
     height: auto;
-    transition-delay: 0.1s;
+    transition-delay: 0.2s;
 }
 
-#detail_page_link:hover #service_name{
-    font-size: 22pt;
-    transition-delay: 0.1s;
+#detail_page_link:hover #service_name {
+    font-size: 210%;
+    transition-delay: 0.2s;
 }
 
 #text_link:hover {
@@ -144,4 +146,21 @@ a.article-title:hover {
 
 .account-heading {
     font-size: 2.5rem;
+}
+
+.button-tooltip-container {
+    position: fixed;
+    margin-left: 47%;
+    display: flex;
+    align-items: center;
+}
+
+#custom-tooltip {
+    display: none;
+    margin-bottom: 10px;
+    padding: 12px;
+    background-color: #42ce56;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14pt;
 }

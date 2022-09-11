@@ -34,7 +34,7 @@ def get_service_name(service_url):
 
 class Password(models.Model):
     service_url = encrypt(models.URLField(max_length=255, default=''))
-    service_icon_url = models.URLField(max_length=255, default=DEFAULT_ICON)
+    service_icon_url = encrypt(models.URLField(max_length=255, default=DEFAULT_ICON))
     service_name = encrypt(models.CharField(max_length=255, default=''))
     password = encrypt(models.CharField(max_length=255, default=''))
     username = encrypt(models.CharField(max_length=255, blank=True, default=''))

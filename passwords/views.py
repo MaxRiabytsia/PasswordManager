@@ -10,6 +10,30 @@ def home(request):
     return render(request, 'passwords/home.html')
 
 
+class SearchView(LoginRequiredMixin, UserPassesTestMixin, ListView):
+    model = Password
+    template_name = 'passwords/passwords.html'
+    context_object_name = 'passwords'
+    ordering = ['service_name']
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        query = self.request.GET.get('search')
+        if query:
+            passwords = Password.objects.filter(author=user).order_by('service_name')
+            search_result = []
+            for password in passwords:
+                if query.lower() in password.service_name.lower():
+                    search_result.append(password)
+        else:
+            search_result = []
+        return [search_result[i:i + 2] for i in range(0, len(search_result), 2)]
+
+    def test_func(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return self.request.user == user
+
+
 class UserPasswordsListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Password
     template_name = 'passwords/passwords.html'
@@ -19,7 +43,7 @@ class UserPasswordsListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         passwords = Password.objects.filter(author=user).order_by('service_name')
-        return [passwords[i:i+2] for i in range(0, len(passwords), 2)]
+        return [passwords[i:i + 2] for i in range(0, len(passwords), 2)]
 
     def test_func(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
