@@ -11,6 +11,11 @@
                     <p class="text-secondary">{{ user.email }}</p>
                 </div>
             </div>
+            <div class="col-1 mt-2 text-end">
+                <a class="btn btn-secondary text-start" href="{% url 'logout' %}">
+                    Logout
+                </a>
+            </div>
             <div class="col-1 mt-2">
                 <a class="btn btn-danger" href="{% url 'account_delete' user.id %}">
                     Delete

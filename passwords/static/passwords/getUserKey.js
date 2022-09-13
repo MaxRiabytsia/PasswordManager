@@ -10,7 +10,7 @@ async function sha256(message) {
 async function getUserKey(username, password) {
     let masterPassword = `${username}${password}`;
     console.log(masterPassword);
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 1000; i++) {
         masterPassword = await sha256(masterPassword);
         console.log(masterPassword);
     }
