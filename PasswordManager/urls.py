@@ -19,7 +19,7 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 from users import views as user_views
-from users.views import LoginViewWithRedirectToPasswords
+from users.views import LoginViewWithRedirectToPasswords, AccountDeleteView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -40,4 +40,6 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),
          name='password_reset_complete'),
     path('profile/', user_views.profile, name='profile'),
+    path('account_delete/<int:pk>/', AccountDeleteView.as_view(template_name='users/confirm_account_delete.html'),
+         name='account_delete')
 ]

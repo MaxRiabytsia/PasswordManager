@@ -1,9 +1,34 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.views import LoginView
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import DeleteView
+
+
+class AccountDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = User
+
+    def test_func(self):
+        user = self.get_object()
+        return self.request.user == user
+
+    def get_success_url(self):
+        return reverse('home')
+
+
+def delete_account(request):
+    try:
+        user = request.user
+        user.delete()
+        messages.success(request, "The user is deleted")
+    except User.DoesNotExist:
+        messages.error(request, "User doesnot exist")
+        return reverse('profile')
+    return reverse('home')
 
 
 class LoginViewWithRedirectToPasswords(LoginView):

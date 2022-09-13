@@ -15,6 +15,9 @@
                    onchange="changeTheme(event)">
             <label class="form-check-label" for="flexSwitchCheckDefault">Dark Theme</label>
         </div>
+        <a class="btn btn-danger btn-sm ml-2 mb-1" href="{% url 'account_delete' user.id %}">
+            Delete
+        </a>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <fieldset class="form-group">
