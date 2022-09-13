@@ -1,0 +1,170 @@
+body {
+    background: #333333;
+    color: #bbbbbd;
+    margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #bbbbbd;
+}
+
+ul {
+    margin: 0;
+}
+
+a, a:hover {
+    color: #bbbbbd;
+    text-decoration: none;
+}
+
+#icon {
+    transition: 0s width;
+    width: 55px;
+    height: auto;
+}
+
+#service_name {
+    transition: 0s font-size;
+}
+
+#detail_page_link:hover #icon {
+    width: 62px;
+    height: auto;
+    transition-delay: 0.2s;
+}
+
+#detail_page_link:hover #service_name {
+    font-size: 210%;
+    transition-delay: 0.2s;
+}
+
+#text_link:hover {
+    font-size: 110%;
+}
+
+.bg-steel {
+    background-color: #28c996;
+}
+
+#home {
+    color: #f2f2f3;
+}
+
+.big_btn {
+    font-size: 18pt;
+    padding: 10px;
+    border-radius: 8px;
+    color: #28c996;
+    border: 2px solid #28c996;
+    background-color: #333333;
+    font-weight: bold;
+}
+
+.big_btn:hover {
+    color: #333333;
+    border: 2px solid #333333;
+    background-color: #28c996;
+}
+
+.main_btn {
+    border-radius: 8px;
+    color: #28c996;
+    border: 2px solid #28c996;
+    background-color: #333333;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.main_btn:hover {
+    color: #333333;
+    border: 2px solid #333333;
+    background-color: #28c996;
+}
+
+.site-header .navbar-nav .nav-link {
+    color: #f2f2f3;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+    color: #333333;
+}
+
+.site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+}
+
+.content-section {
+    background: #333333;
+    padding: 10px 20px;
+    border: 1px solid #333333;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.article-title {
+    color: #bbbbbd;
+}
+
+a.article-title:hover {
+    color: #428bca;
+    text-decoration: none;
+}
+
+.article-content {
+    white-space: pre-line;
+}
+
+.article-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
+}
+
+.article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #333333
+}
+
+.article-metadata a:hover {
+    color: #bbbbbd;
+    text-decoration: none;
+}
+
+.article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+}
+
+.account-heading {
+    font-size: 2.5rem;
+}
+
+.button-tooltip-container {
+    position: fixed;
+    margin-left: 47%;
+    display: flex;
+    align-items: center;
+}
+
+#custom-tooltip {
+    display: none;
+    margin-bottom: 10px;
+    padding: 12px;
+    background-color: #42ce56;
+    border-radius: 6px;
+    color: #333333;
+    font-size: 14pt;
+}
+
+#password-box {
+    border-color: #6e6d6d;
+}
