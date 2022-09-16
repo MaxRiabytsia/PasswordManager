@@ -1,6 +1,43 @@
 {% extends "passwords/base.html" %}
 {% block content %}
     <div class="text-center">
-        <h1>Welcome to Simple Password Manager</h1>
+        <h1 style="margin-top: 100px;">Welcome to Simple Password Manager</h1>
     </div>
+    <div>
+        <div class="circle">
+            <div class="inside-circle-txt">
+                <h1 style="color: #333333">Free</h1>
+                Register and use Simple Password Manager for free!
+            </div>
+        </div>
+        <div class="circle">
+            <div class="inside-circle-txt">
+                <h1 style="color: #333333">Secure</h1>
+                Store your passwords<br> securely!
+            </div>
+        </div>
+        <div class="circle">
+            <div class="inside-circle-txt">
+                <h1 style="color: #333333">Web Based</h1>
+                No need to download anything! Register and use!
+            </div>
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+        <a href="{% url "user-passwords" user.pk %}">
+            <div class="sign-up-btn">
+                <div class="inside-btn-txt">
+                    <h3 style="color: #333333">Your Passwords</h3>
+                </div>
+            </div>
+        </a>
+    {% else %}
+        <a href="{% url "register" %}">
+            <div class="sign-up-btn">
+                <div class="inside-btn-txt">
+                    <h3 style="color: #333333">Sign Up Now!</h3>
+                </div>
+            </div>
+        </a>
+    {% endif %}
 {% endblock content %}

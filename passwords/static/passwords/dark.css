@@ -166,3 +166,50 @@ a.article-title:hover {
 #password-box {
     border-color: #6e6d6d;
 }
+
+.circle {
+    height: 300px;
+    width: 300px;
+    background-color: #28c996;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 100px;
+    margin-top: 40px;
+    line-height: 20px;
+    position: relative;
+    color: #000;
+}
+
+.inside-circle-txt {
+    position: absolute;
+    bottom: 40%;
+    width: 100%;
+    text-align: center;
+    font-size: 16pt;
+}
+
+.sign-up-btn {
+    height: 80px;
+    width: 220px;
+    background-color: #28c996;
+    border-radius: 25px;
+    margin-left: 42%;
+    margin-top: 60px;
+    font-weight: bold;
+    line-height: 20px;
+    position: relative;
+    color: #000;
+}
+
+.sign-up-btn:hover {
+    height: 88px;
+    width: 242px;
+}
+
+.inside-btn-txt {
+    position: absolute;
+    bottom: 25%;
+    width: 100%;
+    text-align: center;
+    font-size: 16pt;
+}
