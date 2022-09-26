@@ -190,26 +190,22 @@ a.article-title:hover {
 
 .sign-up-btn {
     height: 80px;
-    width: 220px;
+    width: 200px;
     background-color: #28c996;
     border-radius: 25px;
-    margin-left: 42%;
-    margin-top: 60px;
     font-weight: bold;
     line-height: 20px;
-    position: relative;
-    color: #000;
+    justify-content: center;
 }
 
 .sign-up-btn:hover {
     height: 88px;
-    width: 242px;
+    width: 220px;
 }
 
 .inside-btn-txt {
     position: absolute;
-    bottom: 25%;
-    width: 100%;
+    bottom: 23.5%;
+    left: 43.3%;
     text-align: center;
-    font-size: 16pt;
 }
