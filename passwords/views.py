@@ -17,7 +17,8 @@ class SearchView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     context_object_name = 'passwords'
     ordering = ['service_name']
 
-    def get_queryset(self):
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         query = self.request.GET.get('search')
         if query:
@@ -27,8 +28,13 @@ class SearchView(LoginRequiredMixin, UserPassesTestMixin, ListView):
                 if query.lower() in password.service_name.lower():
                     search_result.append(password)
         else:
+            passwords = []
             search_result = []
-        return [search_result[i:i + 2] for i in range(0, len(search_result), 2)]
+
+        context_data['service_names'] = [password.service_name for password in passwords]
+        context_data['2d_password_list'] = [search_result[i:i + 2] for i in range(0, len(search_result), 2)]
+
+        return context_data
 
     def test_func(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
@@ -39,12 +45,16 @@ class UserPasswordsListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Password
     template_name = 'passwords/passwords.html'
     context_object_name = 'passwords'
-    ordering = ['service_name']
 
-    def get_queryset(self):
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
         user = get_object_or_404(User, username=self.kwargs.get('username'))
-        passwords = Password.objects.filter(author=user).order_by('service_name')
-        return [passwords[i:i + 2] for i in range(0, len(passwords), 2)]
+        passwords = sorted(list(Password.objects.filter(author=user)), key=lambda x: x.service_name)
+
+        context_data['service_names'] = [password.service_name for password in passwords]
+        context_data['2d_password_list'] = [passwords[i:i + 2] for i in range(0, len(passwords), 2)]
+
+        return context_data
 
     def test_func(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
