@@ -3,19 +3,10 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
 from django_cryptography.fields import encrypt
-import random
-import string
 
 
 DEFAULT_ICON = "https://w7.pngwing.com/pngs/285/477/png-transparent-web-development-web-design-internet-" \
           "web-hosting-service-world-wide-web-logo-symmetry-sphere.png"
-
-
-def generate_password():
-    password_length = 16
-    chars = string.ascii_lowercase + string.ascii_uppercase + string.digits + string.punctuation
-    password = "".join(random.sample(chars, password_length))
-    return password
 
 
 def get_icon_url(service_url):

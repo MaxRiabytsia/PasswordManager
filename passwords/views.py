@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Password
+from .forms import PasswordForm
 
 
 def home(request):
@@ -60,7 +61,7 @@ class PasswordDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 
 class PasswordCreateView(LoginRequiredMixin, CreateView):
     model = Password
-    fields = ['service_url', 'password', 'username', 'email', 'additional_info']
+    form_class = PasswordForm
 
     def form_valid(self, form):
         form.instance.author = self.request.user
