@@ -13,6 +13,7 @@ ENCRYPTED_FIELDNAMES = ["service_icon_url", "service_name", "service_url", "pass
 
 
 class Password(models.Model):
+    user_key = None
     service_url = models.URLField(max_length=255, default='')
     service_icon_url = models.URLField(max_length=255, default=DEFAULT_ICON)
     service_name = models.CharField(max_length=255, default='')
@@ -28,16 +29,13 @@ class Password(models.Model):
         return f"Password for {self.service_url} created by {self.author}"
 
     def save(self, *args, **kwargs):
-        master_password = f"{self.author.pk}{self.author.password}"
-        print(master_password)
-
-        self.service_icon_url = cryptocode.encrypt(self.get_icon_url(self.service_url), master_password)
-        self.service_name = cryptocode.encrypt(self.get_service_name(self.service_url), master_password)
-        self.service_url = cryptocode.encrypt(self.service_url, master_password)
-        self.password = cryptocode.encrypt(self.password, master_password)
-        self.username = cryptocode.encrypt(self.username, master_password)
-        self.email = cryptocode.encrypt(self.email, master_password)
-        self.additional_info = cryptocode.encrypt(self.additional_info, master_password)
+        self.service_icon_url = cryptocode.encrypt(self.get_icon_url(self.service_url), self.user_key)
+        self.service_name = cryptocode.encrypt(self.get_service_name(self.service_url), self.user_key)
+        self.service_url = cryptocode.encrypt(self.service_url, self.user_key)
+        self.password = cryptocode.encrypt(self.password, self.user_key)
+        self.username = cryptocode.encrypt(self.username, self.user_key)
+        self.email = cryptocode.encrypt(self.email, self.user_key)
+        self.additional_info = cryptocode.encrypt(self.additional_info, self.user_key)
 
         super(Password, self).save(*args, **kwargs)
 
@@ -50,11 +48,9 @@ class Password(models.Model):
                 for f in cls._meta.concrete_fields
             ]
 
-        user = User.objects.get(id=values[-1])
-        master_password = f"{user.pk}{user.password}"
         for i, (fieldname, val) in enumerate(zip(field_names, values)):
             if fieldname in ENCRYPTED_FIELDNAMES:
-                values[i] = cryptocode.decrypt(val, master_password)
+                values[i] = cryptocode.decrypt(val, cls.user_key)
 
         new = cls(*values)
         new._state.adding = False

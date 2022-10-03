@@ -47,6 +47,7 @@ class UserPasswordsListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     context_object_name = 'passwords'
 
     def get_context_data(self, **kwargs):
+        Password.user_key = self.request.session["userKey"]
         context_data = super().get_context_data(**kwargs)
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         passwords = sorted(list(Password.objects.filter(author=user)), key=lambda x: x.service_name)

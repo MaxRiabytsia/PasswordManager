@@ -35,6 +35,7 @@ class LoginViewWithRedirectToPasswords(LoginView):
     template_name = 'users/login.html'
 
     def get_success_url(self):
+        self.request.session["userKey"] = self.request.COOKIES.get('userKey')
         return reverse('user-passwords', args=[self.request.user.username])
 
 
