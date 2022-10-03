@@ -173,7 +173,7 @@ a.article-title:hover {
     background-color: #28c996;
     border-radius: 50%;
     display: inline-block;
-    margin-left: 100px;
+    margin-left: 50px;
     margin-top: 40px;
     line-height: 20px;
     position: relative;
@@ -205,8 +205,8 @@ a.article-title:hover {
 
 .inside-btn-txt {
     position: absolute;
-    bottom: 23.5%;
-    left: 43.3%;
+    bottom: 15.7%;
+    left: 44.2%;
     text-align: center;
 }
 
