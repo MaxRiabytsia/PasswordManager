@@ -199,8 +199,7 @@ a.article-title:hover {
 }
 
 .sign-up-btn:hover {
-    height: 88px;
-    width: 220px;
+    background-color: #1a8d6a;
 }
 
 .inside-btn-txt {
