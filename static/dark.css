@@ -1,11 +1,11 @@
 body {
-    background: #fafafa;
-    color: #333333;
+    background: #333333;
+    color: #bbbbbd;
     margin-top: 5rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #444444;
+    color: #bbbbbd;
 }
 
 ul {
@@ -13,7 +13,7 @@ ul {
 }
 
 a, a:hover {
-    color: #333333;
+    color: #bbbbbd;
     text-decoration: none;
 }
 
@@ -47,7 +47,7 @@ a, a:hover {
 }
 
 #home {
-    color: #333333;
+    color: #f2f2f3;
 }
 
 .big_btn {
@@ -56,13 +56,13 @@ a, a:hover {
     border-radius: 8px;
     color: #28c996;
     border: 2px solid #28c996;
-    background-color: #ffffff;
+    background-color: #333333;
     font-weight: bold;
 }
 
 .big_btn:hover {
-    color: #ffffff;
-    border: 2px solid #ffffff;
+    color: #333333;
+    border: 2px solid #333333;
     background-color: #28c996;
 }
 
@@ -70,23 +70,23 @@ a, a:hover {
     border-radius: 8px;
     color: #28c996;
     border: 2px solid #28c996;
-    background-color: #ffffff;
+    background-color: #333333;
     font-size: 12pt;
     font-weight: bold;
 }
 
 .main_btn:hover {
-    color: #ffffff;
-    border: 2px solid #ffffff;
+    color: #333333;
+    border: 2px solid #333333;
     background-color: #28c996;
 }
 
 .site-header .navbar-nav .nav-link {
-    color: #333333;
+    color: #f2f2f3;
 }
 
 .site-header .navbar-nav .nav-link:hover {
-    color: #ffffff;
+    color: #333333;
 }
 
 .site-header .navbar-nav .nav-link.active {
@@ -94,15 +94,15 @@ a, a:hover {
 }
 
 .content-section {
-    background: #ffffff;
+    background: #333333;
     padding: 10px 20px;
-    border: 1px solid #dddddd;
+    border: 1px solid #333333;
     border-radius: 3px;
     margin-bottom: 20px;
 }
 
 .article-title {
-    color: #444444;
+    color: #bbbbbd;
 }
 
 a.article-title:hover {
@@ -123,11 +123,11 @@ a.article-title:hover {
 .article-metadata {
     padding-bottom: 1px;
     margin-bottom: 4px;
-    border-bottom: 1px solid #e3e3e3
+    border-bottom: 1px solid #333333
 }
 
 .article-metadata a:hover {
-    color: #333;
+    color: #bbbbbd;
     text-decoration: none;
 }
 
@@ -163,16 +163,21 @@ a.article-title:hover {
     font-size: 14pt;
 }
 
+#password-box {
+    border-color: #6e6d6d;
+}
+
 .circle {
     height: 300px;
     width: 300px;
     background-color: #28c996;
     border-radius: 50%;
     display: inline-block;
-    margin-left: 50px;
+    margin-left: 95px;
     margin-top: 40px;
     line-height: 20px;
     position: relative;
+    color: #000;
 }
 
 .inside-circle-txt {
@@ -199,10 +204,9 @@ a.article-title:hover {
 
 .inside-btn-txt {
     position: absolute;
-    bottom: 15.7%;
-    left: 44.5%;
+    bottom: 23%;
+    left: 43.7%;
     text-align: center;
-    font-size: 20pt;
 }
 
 .autocomplete {
@@ -241,6 +245,7 @@ input[type=submit] {
 }
 
 .autocomplete-items div {
+    color: #333333;
     padding: 10px;
     cursor: pointer;
     background-color: #fff;
