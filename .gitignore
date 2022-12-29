@@ -1,0 +1,18 @@
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
+
+# Python #
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+
+# Other
+*.png
+*.drawio
