@@ -20,17 +20,6 @@ class AccountDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return reverse('home')
 
 
-def delete_account(request):
-    try:
-        user = request.user
-        user.delete()
-        messages.success(request, "The user is deleted")
-    except User.DoesNotExist:
-        messages.error(request, "User doesnot exist")
-        return reverse('profile')
-    return reverse('home')
-
-
 class LoginViewWithRedirectToPasswords(LoginView):
     template_name = 'users/login.html'
 
